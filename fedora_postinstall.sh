@@ -5,10 +5,9 @@ exit
 sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
-sudo dnf update
-sudo dnf install -y gparted gnome-tweak-tool neofetch screenfetch zsh git curl wget chsh bpytop htop dnf-plugins-core vlc openssl-devel readline-devel zlib-devel speedtest-cli
+sudo dnf update -y
+sudo dnf install -y gparted gnome-tweak-tool neofetch screenfetch zsh git curl wget bpytop htop dnf-plugins-core vlc openssl-devel readline-devel zlib-devel speedtest-cli
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-chsh -s $(which zsh)
 
 
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -45,4 +44,5 @@ tar -vxf tsetup.3.5.1.tar.xz
 cd Telegram
 ./Telegram
 
-
+sudo dnf install -y chsh
+chsh -s $(which zsh)
