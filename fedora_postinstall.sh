@@ -35,3 +35,10 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 wget -c https://github.com/lucasgrocha/dotfiles/blob/main/themes.zip
 unzip themes.zip
 mv themes ~/.themes
+
+wget -c https://updates.tdesktop.com/tlinux/tsetup.3.5.1.tar.xz
+tar -vxf tsetup.3.5.1.tar.xz
+cd Telegram
+./Telegram
+
+
