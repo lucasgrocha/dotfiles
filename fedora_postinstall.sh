@@ -28,7 +28,10 @@ wget -c https://github.com/lucasgrocha/dotfiles/blob/main/.zshrc
 rm -rf ~/.zshrc
 mv .zshrc ~/
 cd ..
-rmdir temp
 sudo nano /etc/default/grub
 sudo grub2-mkconfig -o /etc/grub2-efi.cfg
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+
+wget -c https://github.com/lucasgrocha/dotfiles/blob/main/themes.zip
+unzip themes.zip
+mv themes ~/.themes
