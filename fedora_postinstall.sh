@@ -47,12 +47,17 @@ asdf plugin-add nodejs
 asdf install nodejs 16.13.2
 asdf global asdf nodejs 16.13.2
 
-sudo dnf remove -y fedora-chromium-config
-
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 sudo flatpak install -y --noninteractive flathub com.spotify.Client
 flatpak run com.spotify.Client
 
+wget -c https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+
+sudo rpm -i google-chrome-stable_current_x86_64.rpm
+
+rm -rf google-chrome-stable_current_x86_64.rpm
+
+sudo dnf remove -y fedora-chromium-config
 
 # sudo nano /etc/default/grub
 # sudo grub2-mkconfig -o /etc/grub2-efi.cfg
