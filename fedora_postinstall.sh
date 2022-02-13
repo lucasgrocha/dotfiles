@@ -54,9 +54,9 @@ sudo dnf remove -y fedora-chromium-config
 # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 
-wget -c https://updates.tdesktop.com/tlinux/tsetup.3.5.1.tar.xz
-tar -vxf tsetup.3.5.1.tar.xz
-cd Telegram
-./Telegram
+# wget -c https://updates.tdesktop.com/tlinux/tsetup.3.5.1.tar.xz
+# tar -vxf tsetup.3.5.1.tar.xz
+# cd Telegram
+# ./Telegram
 
 chsh -s $(which zsh)
