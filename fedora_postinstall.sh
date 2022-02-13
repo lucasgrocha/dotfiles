@@ -6,7 +6,7 @@ sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-r
 sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 sudo dnf update -y
-sudo dnf install -y gparted gnome-tweak-tool neofetch screenfetch zsh git curl wget bpytop htop dnf-plugins-core vlc openssl-devel readline-devel zlib-devel speedtest-cli util-linux-user
+sudo dnf install -y gparted gnome-tweak-tool neofetch screenfetch zsh git curl wget bpytop htop dnf-plugins-core vlc flatpak openssl-devel readline-devel zlib-devel speedtest-cli util-linux-user
 
 rm -rf ~/.zshrc
 mv zshrc ~/.zshrc
@@ -48,6 +48,11 @@ asdf install nodejs 16.13.2
 asdf global asdf nodejs 16.13.2
 
 sudo dnf remove -y fedora-chromium-config
+
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install -y --noninteractive flathub com.spotify.Client
+flatpak run com.spotify.Client
+
 
 # sudo nano /etc/default/grub
 # sudo grub2-mkconfig -o /etc/grub2-efi.cfg
