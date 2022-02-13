@@ -1,12 +1,16 @@
-sudo su
-echo "fastestmirror=true" >> /etc/dnf/dnf.conf
-exit
+# sudo su
+# echo "fastestmirror=true" >> /etc/dnf/dnf.conf
+# exit
 
 sudo dnf install -y https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 sudo dnf install -y https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 sudo dnf update -y
-sudo dnf install -y gparted gnome-tweak-tool neofetch screenfetch zsh git curl wget bpytop htop dnf-plugins-core vlc openssl-devel readline-devel zlib-devel speedtest-cli
+sudo dnf install -y gparted gnome-tweak-tool neofetch screenfetch zsh git curl wget bpytop htop dnf-plugins-core vlc openssl-devel readline-devel zlib-devel speedtest-cli util-linux-user
+
+rm -rf ~/.zshrc
+mv zshrc ~/.zshrc
+
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 
@@ -17,40 +21,46 @@ git clone https://github.com/lucasgrocha/dotfiles.git
 cd dotfiles/gnome
 tar -xvf Bibata-Modern.tar.gz
 tar -xvf Tela-blue.tar.xz
+tar -xvf 01-Flat-Remix-GTK-Blue_20220119.tar.xz
 
-mv ../temp
+mkdir ~/.icons
+mv $(find . -maxdepth 1 -type d | grep -E 'Bibata|Tela') ~/.icons
+
+mkdir ~/.themes
+mv $(find . -maxdepth 1 -type d | grep -E 'Flat') ~/.themes
 
 
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.6
 echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.zshrc
 echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.zshrc
+
+echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bashrc
+echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc
+
+zsh
 source ~/.zshrc
+exit
+
+source ~/.bashrc
 asdf update
-source ~/.zshrc
 asdf plugin-add ruby
-asdf install ruby 2.6.3
+asdf intall ruby 2.7.4
+asdf global ruby 2.7.4
+
 asdf plugin-add nodejs
 asdf install nodejs 16.13.2
 asdf global asdf nodejs 16.13.2
-sudo dnf remove -y fedora-chromium-config
-mkdir temp
-cd temp
-wget -c https://github.com/lucasgrocha/dotfiles/blob/main/.zshrc
-rm -rf ~/.zshrc
-mv .zshrc ~/
-cd ..
-sudo nano /etc/default/grub
-sudo grub2-mkconfig -o /etc/grub2-efi.cfg
-sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-wget -c https://github.com/lucasgrocha/dotfiles/blob/main/themes.zip
-unzip themes.zip
-mv themes ~/.themes
+sudo dnf remove -y fedora-chromium-config
+
+# sudo nano /etc/default/grub
+# sudo grub2-mkconfig -o /etc/grub2-efi.cfg
+# sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+
 
 wget -c https://updates.tdesktop.com/tlinux/tsetup.3.5.1.tar.xz
 tar -vxf tsetup.3.5.1.tar.xz
 cd Telegram
 ./Telegram
 
-sudo dnf install -y chsh
 chsh -s $(which zsh)
