@@ -28,7 +28,7 @@ mv $(find . -maxdepth 1 -type d | grep -E 'Bibata|Tela') ~/.icons
 
 mkdir ~/.themes
 mv $(find . -maxdepth 1 -type d | grep -E 'Flat') ~/.themes
-
+cd ..
 
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.6
 echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.zshrc
@@ -36,10 +36,6 @@ echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.zshrc
 
 echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.bashrc
 echo -e '\n. $HOME/.asdf/completions/asdf.bash' >> ~/.bashrc
-
-zsh
-source ~/.zshrc
-exit
 
 source ~/.bashrc
 asdf update
