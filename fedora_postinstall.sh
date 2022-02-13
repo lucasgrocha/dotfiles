@@ -12,6 +12,14 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/lucasgrocha/dotfiles.git
+
+cd dotfiles/gnome
+tar -xvf Bibata-Modern.tar.gz
+tar -xvf Tela-blue.tar.xz
+
+mv ../temp
+
 
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.7.6
 echo -e '\n. $HOME/.asdf/asdf.sh' >> ~/.zshrc
